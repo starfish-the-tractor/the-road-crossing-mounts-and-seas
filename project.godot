@@ -16,11 +16,8 @@ _global_script_class_icons={
 [application]
 
 config/name="the-road-crossing-mounts&seas"
+run/main_scene="res://root.tscn"
 config/icon="res://icon.png"
-
-[autoload]
-
-UserData="*res://addons/github-integration/scripts/user_data.gd"
 
 [rendering]
 
