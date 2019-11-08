@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://font/NotoSerifSC-Regular.otf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
@@ -54,4 +54,5 @@ margin_right = 204.0
 margin_bottom = 92.0
 text = "Quit"
 
+[connection signal="pressed" from="VBoxContainer/NewGameBtn" to="." method="_on_NewGameBtn_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitBtn" to="." method="_on_QuitBtn_pressed"]
