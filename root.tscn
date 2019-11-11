@@ -6,7 +6,6 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="AdventrueRoad" parent="." instance=ExtResource( 1 )]
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -14,9 +14,16 @@ func _ready() -> void:
 #	pass
 
 func _on_NewGameBtn_pressed() -> void:
+	var daemon = get_tree().root.get_child(0)
 	# this code only for debug
 	get_tree().current_scene.find_node('MainMenu').visible = false
 	get_tree().current_scene.find_node('AdventrueRoad').visible = true
+	# if not daemon.load_archive('test.arch'):
+	# 	print('no such file')
+	# daemon.new_archive()
+	daemon.load_archive('test.arch')
+	# daemon.save_as_archvie('test.arch')
+	print(daemon.enum_archive())
 
 func _on_QuitBtn_pressed() -> void:
 	get_tree().quit()
