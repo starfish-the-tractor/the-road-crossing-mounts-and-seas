@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Archive",
 "language": "GDScript",
 "path": "res://scripts/Archive.gd"
+}, {
+"base": "Node",
+"class": "Daemon",
+"language": "GDScript",
+"path": "res://scripts/Daemon.gd"
 } ]
 _global_script_class_icons={
-"Archive": ""
+"Archive": "",
+"Daemon": ""
 }
 
 [application]

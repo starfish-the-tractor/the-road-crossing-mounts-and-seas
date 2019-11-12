@@ -1,4 +1,5 @@
 extends Node
+class_name Daemon
 
 var archive_path: String = "user://archive"
 var archive: Archive = null
@@ -26,6 +27,9 @@ func enum_archive() -> Array:
 			file_name = dir.get_next()
 	return result
 
+func clear() -> void:
+	archive = null
+
 func new_archive() -> void:
 	if archive != null:
 		archive.save_to_file(archive.file_path)
@@ -34,12 +38,12 @@ func new_archive() -> void:
 	pass
 
 func load_archive(name: String) -> bool:
-	if not File.new().file_exists(archive_path + '/' + name):
+	if not File.new().file_exists(archive_path + "/" + name):
 		return false
 	if archive != null:
 		archive.save_to_file(archive.file_path)
 	archive = Archive.new()
-	archive.load_from_file(archive_path  + '/' + name)
+	archive.load_from_file(archive_path  + "/" + name)
 	return true
 
 func save_archive() -> void:
@@ -51,5 +55,9 @@ func save_archive() -> void:
 func save_as_archvie(name: String) -> void:
 	if archive == null:
 		return
-	archive.save_to_file(archive_path  + '/' + name)
+	archive.save_to_file(archive_path  + "/" + name)
 	pass
+
+func delete_archive(name: String) -> void:
+	if File.new().file_exists(archive_path + "/" + name):
+		Directory.new().remove(archive_path + "/" + name)
