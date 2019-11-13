@@ -4,10 +4,13 @@
 [ext_resource path="res://scenes/MainMenu.tscn" type="PackedScene" id=2]
 
 [node name="Node2D" type="Node2D"]
+visible = false
 
 [node name="AdventrueRoad" parent="." instance=ExtResource( 1 )]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource( 2 )]
+visible = false
 

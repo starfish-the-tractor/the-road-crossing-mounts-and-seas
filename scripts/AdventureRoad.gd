@@ -20,6 +20,6 @@ func _resize() -> void:
 	var root := get_tree().get_root() as Viewport
 	# print(root.size)
 	var new_center := root.size / 2
-	position += new_center - base_center
+	find_node("ActionRoot").position += new_center - base_center
 	base_center = new_center
 	pass

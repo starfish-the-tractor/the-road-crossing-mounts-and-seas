@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func renew_list() -> void:
 	self.clear_desc()
-	var archives := (get_tree().root.get_child(0) as Daemon).enum_archive()
+	var archives := (get_node("/root/Daemon") as Daemon).enum_archive()
 	var list := find_node("ItemList")
 	for child in list.get_children():
 		list.remove_child(child)
@@ -42,7 +42,7 @@ func _on_QuitBtn_pressed() -> void:
 	get_tree().quit()
 
 func _on_select_archive(name) -> void:
-	var daemon := get_tree().root.get_child(0) as Daemon
+	var daemon := get_node("/root/Daemon") as Daemon
 	if daemon.load_archive(name):
 		self.show_desc(daemon.archive)
 		self.current_archive_name = name
@@ -50,7 +50,7 @@ func _on_select_archive(name) -> void:
 		self.clear_desc()
 
 func _on_NewArchive_pressed() -> void:
-	var daemon := get_tree().root.get_child(0) as Daemon
+	var daemon := get_node("/root/Daemon") as Daemon
 	daemon.new_archive()
 	(find_node("ArchiveMenu") as Control).visible = false
 	(find_node("NewArchiveMenu") as Control).visible = true
@@ -59,18 +59,18 @@ func _on_LoadArchive_pressed() -> void:
 	self.enter_game()
 
 func _on_DeleteArchive_pressed() -> void:
-	var daemon := get_tree().root.get_child(0) as Daemon
+	var daemon := get_node("/root/Daemon") as Daemon
 	daemon.delete_archive(self.current_archive_name)
 	self.renew_list()
 
 func _on_Back_pressed() -> void:
-	(get_tree().root.get_child(0) as Daemon).clear()
+	(get_node("/root/Daemon") as Daemon).clear()
 	self.clear_desc()
 	(find_node("LaunchMenu") as Control).visible = true
 	(find_node("ArchiveMenu") as Control).visible = false
 
 func _on_Sure_pressed() -> void:
-	var daemon := get_tree().root.get_child(0) as Daemon
+	var daemon := get_node("/root/Daemon") as Daemon
 	daemon.save_as_archvie(self.current_archive_name)
 	self.enter_game()
 
@@ -85,8 +85,5 @@ func _on_NewArchiveName_text_changed() -> void:
 	self.current_archive_name = name
 
 func enter_game() -> void:
-	# only for debug here
-	get_tree().current_scene.find_node('MainMenu').visible = false
-	get_tree().current_scene.find_node('AdventrueRoad').visible = true
-	# todo here.
+	get_tree().change_scene("res://scenes/AdventureRoad.tscn")
 	pass
