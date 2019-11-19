@@ -1,0 +1,17 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "PlayDice"
+tracks/0/type = "value"
+tracks/0/path = NodePath("DiceAnimation/Dice:transform")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0118007, 0.5, 0.995414, 0.995985 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Transform( 0.707108, 0, 0.707106, 0, 1, 0, -0.707106, 0, 0.707108, 0, 0, 0 ), Transform( 0.372553, -0.906332, 0.199417, -0.79906, -0.422567, -0.427715, 0.471919, 0, -0.881642, 0, 3.5, 0 ), Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ), Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0 ) ]
+}
+
