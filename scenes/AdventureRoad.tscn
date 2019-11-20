@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scripts/AdventureRoad.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://animations/PlayDice.tres" type="Animation" id=5]
 [ext_resource path="res://scripts/RoadHUD.gd" type="Script" id=6]
 [ext_resource path="res://font/NotoSerifSC-Regular.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://scripts/WorldMap.gd" type="Script" id=8]
+[ext_resource path="res://scenes/PositionInMap.tscn" type="PackedScene" id=9]
+[ext_resource path="res://images/background/bg.png" type="Texture" id=10]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=11]
+[ext_resource path="res://images/Player/player1.png" type="Texture" id=12]
 
 [sub_resource type="TileSet" id=1]
 0/name = "icon.png 0"
@@ -52,7 +57,7 @@ start_node = "DiceIdleStart"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
-[sub_resource type="CubeMesh" id=17]
+[sub_resource type="CubeMesh" id=10]
 
 [sub_resource type="ViewportTexture" id=11]
 viewport_path = NodePath("DiceViewport")
@@ -72,10 +77,16 @@ font_data = ExtResource( 7 )
 [sub_resource type="DynamicFont" id=16]
 font_data = ExtResource( 7 )
 
+[sub_resource type="Curve2D" id=17]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -503.91, -0.744202, 0, 0, 0, 0, 515.975, 3.1709 )
+}
+
 [node name="AdventrueRoad" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="ActionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="TileMap" type="TileMap" parent="ActionRoot"]
 position = Vector2( -32, -32 )
@@ -84,6 +95,7 @@ format = 1
 tile_data = PoolIntArray( -196612, 0, 0, -262144, 0, 0, -262140, 0, 0, -131075, 0, 0, -196605, 0, 0, -65538, 0, 0, -131070, 0, 0, -1, 0, 0, -65535, 0, 0, 65532, 0, 0, 0, 0, 0, 4, 0, 0, 131071, 0, 0, 65537, 0, 0, 196606, 0, 0, 131074, 0, 0, 262141, 0, 0, 196611, 0, 0, 327676, 0, 0, 262144, 0, 0, 262148, 0, 0 )
 
 [node name="DiceViewport" type="Viewport" parent="."]
+editor/display_folded = true
 size = Vector2( 256, 512 )
 transparent_bg = true
 msaa = 2
@@ -104,7 +116,7 @@ anims/PlayDice = ExtResource( 5 )
 transform = Transform( 0.707108, 0, 0.707106, 0, 1, 0, -0.707106, 0, 0.707108, 0, 0, 0 )
 
 [node name="DiceInstance" type="MeshInstance" parent="DiceViewport/AnimationTree/DiceAnimation/Dice"]
-mesh = SubResource( 17 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="DirectionalLight" type="DirectionalLight" parent="DiceViewport"]
@@ -123,8 +135,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="MenuBtn" type="TextureButton" parent="HUD/HUDRoot"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_top = 1.0
+margin_right = 64.0
+margin_bottom = 65.0
 texture_normal = ExtResource( 2 )
 
 [node name="DiceBtn" type="TextureButton" parent="HUD/HUDRoot"]
@@ -200,10 +213,38 @@ anchor_bottom = 0.9
 
 [node name="SettingBackBtn" type="Button" parent="HUD/SettingMenu"]
 margin_right = 512.0
-margin_bottom = 20.0
+margin_bottom = 30.0
 custom_fonts/font = SubResource( 16 )
 text = "返回"
 
+[node name="WorldMap" type="Node2D" parent="."]
+script = ExtResource( 8 )
+Pos = ExtResource( 9 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="WorldMap"]
+
+[node name="bg" type="Sprite" parent="WorldMap/CanvasModulate"]
+position = Vector2( 277.142, 0.349335 )
+scale = Vector2( 0.798998, 0.798998 )
+texture = ExtResource( 10 )
+
+[node name="Camera2D" type="Camera2D" parent="WorldMap"]
+current = true
+
+[node name="Player" type="Sprite" parent="WorldMap"]
+script = ExtResource( 11 )
+
+[node name="player1" type="Sprite" parent="WorldMap/Player"]
+position = Vector2( -7.67133, -2.40686 )
+scale = Vector2( 0.443111, 0.443111 )
+texture = ExtResource( 12 )
+
+[node name="PosPath" type="Path2D" parent="WorldMap"]
+curve = SubResource( 17 )
+
+[node name="PosSpawnLocation" type="PathFollow2D" parent="WorldMap/PosPath"]
+position = Vector2( -503.91, -0.744202 )
+rotation = 0.00383879
 [connection signal="PlayDiceFinish" from="DiceViewport" to="HUD" method="_on_DiceViewport_PlayDiceFinish"]
 [connection signal="pressed" from="HUD/HUDRoot/MenuBtn" to="HUD" method="_on_MenuBtn_pressed"]
 [connection signal="pressed" from="HUD/HUDRoot/DiceBtn" to="HUD" method="_on_DiceBtn_pressed"]
