@@ -1,4 +1,5 @@
 extends Node2D
+export (PackedScene) var Pos
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -10,6 +11,11 @@ var speed = 200
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	camera.position = player.position
+	for i in range(4):
+		$PosPath/PosSpawnLocation.set_offset(randi())
+		var pos = Pos.instance()
+		add_child(pos)
+		pos.position = $PosPath/PosSpawnLocation.position
 	 # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
