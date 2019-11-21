@@ -7,11 +7,35 @@ tracks/0/path = NodePath("DiceAnimation/Dice:transform")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0.0118007, 0.5, 0.995414, 0.995985 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Transform( 0.707108, 0, 0.707106, 0, 1, 0, -0.707106, 0, 0.707108, 0, 0, 0 ), Transform( 0.372553, -0.906332, 0.199417, -0.79906, -0.422567, -0.427715, 0.471919, 0, -0.881642, 0, 3.5, 0 ), Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ), Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DiceAnimation/Dice:translation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.985524 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 3.5, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DiceAnimation/Dice:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.00651054, 0.0154524, 0.5, 0.992026 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 44.9999, 0 ), Vector3( 0, 45, 0 ), Vector3( 360, 45, 360 ), Vector3( 720, 45, 720 ) ]
 }
 

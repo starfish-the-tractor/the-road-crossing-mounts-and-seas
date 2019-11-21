@@ -58,7 +58,7 @@ start_node = "DiceIdleStart"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
-[sub_resource type="CubeMesh" id=18]
+[sub_resource type="CubeMesh" id=10]
 
 [sub_resource type="ViewportTexture" id=11]
 viewport_path = NodePath("DiceViewport")
@@ -103,26 +103,23 @@ render_target_v_flip = true
 script = ExtResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="DiceViewport"]
-editor/display_folded = true
 tree_root = SubResource( 8 )
 anim_player = NodePath("DiceAnimation")
 active = true
 parameters/playback = SubResource( 9 )
 
 [node name="DiceAnimation" type="AnimationPlayer" parent="DiceViewport/AnimationTree"]
-editor/display_folded = true
 anims/DiceIdle = ExtResource( 4 )
 anims/PlayDice = ExtResource( 5 )
 
 [node name="Dice" type="MeshInstance" parent="DiceViewport/AnimationTree/DiceAnimation"]
-editor/display_folded = true
 transform = Transform( 0.707108, 0, 0.707106, 0, 1, 0, -0.707106, 0, 0.707108, 0, 0, 0 )
 
-[node name="Scene Root" parent="DiceViewport/AnimationTree/DiceAnimation/Dice" instance=ExtResource( 6 )]
+[node name="DiceBody" parent="DiceViewport/AnimationTree/DiceAnimation/Dice" instance=ExtResource( 6 )]
 
 [node name="DiceInstance" type="MeshInstance" parent="DiceViewport/AnimationTree/DiceAnimation/Dice"]
 visible = false
-mesh = SubResource( 18 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="DirectionalLight" type="DirectionalLight" parent="DiceViewport"]
