@@ -113,7 +113,7 @@ anims/DiceIdle = ExtResource( 4 )
 anims/PlayDice = ExtResource( 5 )
 
 [node name="Dice" type="MeshInstance" parent="DiceViewport/AnimationTree/DiceAnimation"]
-transform = Transform( 0.707108, 0, 0.707106, 0, 1, 0, -0.707106, 0, 0.707108, 0, 0, 0 )
+transform = Transform( 1.06066, 0, 1.06066, 0, 1.5, 0, -1.06066, 0, 1.06066, 0, 0, 0 )
 
 [node name="DiceBody" parent="DiceViewport/AnimationTree/DiceAnimation/Dice" instance=ExtResource( 6 )]
 
@@ -129,7 +129,7 @@ transform = Transform( 1, 0, 0, 0, 0.627419, 0.778682, 0, -0.778682, 0.627419, 0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46401, -2.22434 )
 
 [node name="Camera" type="Camera" parent="DiceViewport"]
-transform = Transform( 1, 0, 0, 0, 0.993612, 0.112849, 0, -0.112849, 0.993612, 0, 1.82133, 6.60192 )
+transform = Transform( 1, 0, 0, 0, 0.993612, 0.112849, 0, -0.112849, 0.993612, 0, 2.07792, 6.60192 )
 current = true
 
 [node name="HUD" type="CanvasLayer" parent="."]

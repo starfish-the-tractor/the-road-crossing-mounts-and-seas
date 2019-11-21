@@ -48,7 +48,7 @@ func _on_SettingBackBtn_pressed() -> void:
 	find_node("SettingMenu").visible = false
 
 # dice event
-func _on_DiceViewport_PlayDiceFinish() -> void:
+func _on_DiceViewport_PlayDiceFinish(pt: int) -> void:
 	find_node("HUDRoot").visible = true
 	find_node("Background").visible = false
 	find_node("DiceView").visible = false
