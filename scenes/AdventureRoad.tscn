@@ -229,8 +229,8 @@ Pos = ExtResource( 10 )
 [node name="CanvasModulate" type="CanvasModulate" parent="WorldMap"]
 
 [node name="bg" type="Sprite" parent="WorldMap/CanvasModulate"]
-position = Vector2( 277.142, 0.349335 )
-scale = Vector2( 0.798998, 0.798998 )
+position = Vector2( 305.99, -0.680958 )
+scale = Vector2( 0.798998, 0.68555 )
 texture = ExtResource( 11 )
 
 [node name="Camera2D" type="Camera2D" parent="WorldMap"]
@@ -250,8 +250,9 @@ curve = SubResource( 17 )
 [node name="PosSpawnLocation" type="PathFollow2D" parent="WorldMap/PosPath"]
 position = Vector2( -503.91, -0.744202 )
 rotation = 0.0038388
-
+[connection signal="PlayDiceFinish" from="DiceViewport" to="." method="_on_DiceViewport_PlayDiceFinish"]
 [connection signal="PlayDiceFinish" from="DiceViewport" to="HUD" method="_on_DiceViewport_PlayDiceFinish"]
+[connection signal="PlayDiceFinish" from="DiceViewport" to="WorldMap" method="_on_DiceViewport_PlayDiceFinish"]
 [connection signal="pressed" from="HUD/HUDRoot/MenuBtn" to="HUD" method="_on_MenuBtn_pressed"]
 [connection signal="pressed" from="HUD/HUDRoot/DiceBtn" to="HUD" method="_on_DiceBtn_pressed"]
 [connection signal="pressed" from="HUD/Menu/ContinueBtn" to="HUD" method="_on_ContinueBtn_pressed"]
